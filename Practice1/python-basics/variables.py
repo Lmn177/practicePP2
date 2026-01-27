@@ -1,5 +1,4 @@
-x = 5
-print (type(x))
-
-y = 6.036
-print(type(y))
+x, y, z = "Orange", "Banana", "Cherry"
+print(x)
+print(y)
+print(z)
