@@ -1,0 +1,122 @@
+class Person:
+  def __init__(self, name):
+    self.name = name
+
+  def greet(self):
+    print("Hello, my name is " + self.name)
+
+p1 = Person("Emil")
+p1.greet()
+
+
+
+class Calculator:
+  def add(self, a, b):
+    return a + b
+
+  def multiply(self, a, b):
+    return a * b
+
+calc = Calculator()
+print(calc.add(5, 3))
+print(calc.multiply(4, 7))
+
+
+
+
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+  def get_info(self):
+    return f"{self.name} is {self.age} years old"
+
+p1 = Person("Tobias", 28)
+print(p1.get_info())
+
+
+
+
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+  def celebrate_birthday(self):
+    self.age += 1
+    print(f"Happy birthday! You are now {self.age}")
+
+p1 = Person("Linus", 25)
+p1.celebrate_birthday()
+p1.celebrate_birthday()
+
+
+
+
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+p1 = Person("Emil", 36)
+print(p1)
+
+
+
+
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+  def __str__(self):
+    return f"{self.name} ({self.age})"
+
+p1 = Person("Tobias", 36)
+print(p1)
+
+
+
+
+
+
+
+class Playlist:
+  def __init__(self, name):
+    self.name = name
+    self.songs = []
+
+  def add_song(self, song):
+    self.songs.append(song)
+    print(f"Added: {song}")
+
+  def remove_song(self, song):
+    if song in self.songs:
+      self.songs.remove(song)
+      print(f"Removed: {song}")
+
+  def show_songs(self):
+    print(f"Playlist '{self.name}':")
+    for song in self.songs:
+      print(f"- {song}")
+
+my_playlist = Playlist("Favorites")
+my_playlist.add_song("Bohemian Rhapsody")
+my_playlist.add_song("Stairway to Heaven")
+my_playlist.show_songs()
+
+
+
+
+class Robot:
+    def __init__(self, name, version):
+        self.name = name         
+        self.version = version    
+
+    def say_hello(self):
+    
+        print(f"Робот {self.name} приветствует вас! Версия: {self.version}")
+
+r1 = Robot("R2-D2", 1.0)
+r1.say_hello()
