@@ -1,54 +1,46 @@
-data = [10, "Привет", 3.14, 55, False, 100]
-for x in data:
-    if isinstance(x, int):
-        print(x)
+import json
+x = '{ "name":"John", "age":30, "city":"New York"}'
+
+y = json.loads(x)
+
+print(y["age"])
 
 
-n = 123456789
-m = 0
-n = str(abs(int(n)))
-for x in n:
-    digit = int(x)
-    if digit % 2 == 0:
-        m = m + digit
+x = {
+    "name": "John",
+    "age":30,
+    "city":"New York"
+}
 
-print(m)
+y = json.dumps(x)
 
-def is_empty(value):
-    if bool(value):
-        print("YES")
-    else:
-        print("NO")
-
-is_empty(12354)
-is_empty("dfgh")
-is_empty(0)
+print(y)
 
 
+print(json.dumps({"name": "John", "age": 30}))
+print(json.dumps(["apple", "bananas"]))
+print(json.dumps(("apple", "bananas")))
+print(json.dumps("hello"))
+print(json.dumps(42))
+print(json.dumps(31.76))
+print(json.dumps(True))
+print(json.dumps(False))
+print(json.dumps(None))
 
 
 
-def isUsual(num):
-    if num <= 0:
-        return False
-    
-    while num % 2 == 0:
-        num //=2
 
+x = {
+  "name": "John",
+  "age": 30,
+  "married": True,
+  "divorced": False,
+  "children": ("Ann","Billy"),
+  "pets": None,
+  "cars": [
+    {"model": "BMW 230", "mpg": 27.5},
+    {"model": "Ford Edge", "mpg": 24.1}
+  ]
+}
 
-    while num % 3 == 0:
-        num //=3
-
-    while num % 5 == 0:
-        num //=5
-
-
-    return num == 1
-
-
-n = int(input())
-
-if isUsual(n):
-    print("Yes")
-else:
-    print("No")
+print(json.dumps(x, indent=4, sort_keys=True))
