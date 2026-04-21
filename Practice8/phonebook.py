@@ -1,13 +1,12 @@
 import psycopg2
 from config import load_config
 
-# --- 1. Функция поиска по паттерну (через FUNCTION) ---
+# 1
 def search_contacts(pattern):
     config = load_config()
     try:
         with psycopg2.connect(**config) as conn:
             with conn.cursor() as cur:
-                # В PostgreSQL функции вызываются через SELECT
                 cur.execute("CALL upsert_contact(%s::varchar, %s::varchar, %s::varchar)", (f_name, l_name, phone))
                 rows = cur.fetchall()
                 if not rows:
@@ -20,20 +19,19 @@ def search_contacts(pattern):
     except Exception as e:
         print(f"Ошибка поиска: {e}")
 
-# --- 2. Добавление или Обновление (через PROCEDURE upsert_contact) ---
+#  2. 
 def upsert_contact(f_name, l_name, phone):
     config = load_config()
     try:
         with psycopg2.connect(**config) as conn:
             with conn.cursor() as cur:
-                # Процедуры вызываются через CALL
                 cur.execute("CALL upsert_contact(%s, %s, %s)", (f_name, l_name, phone))
                 conn.commit()
                 print(f"Контакт {f_name} успешно обработан (добавлен/обновлен).")
     except Exception as e:
         print(f"Ошибка при выполнении upsert: {e}")
 
-# --- 3. Пагинация (через FUNCTION get_contacts_paginated) ---
+# 3
 def get_paginated(limit, offset):
     config = load_config()
     try:
@@ -47,7 +45,7 @@ def get_paginated(limit, offset):
     except Exception as e:
         print(f"Ошибка пагинации: {e}")
 
-# --- 4. Удаление (через PROCEDURE delete_contact_v2) ---
+# 4 
 def delete_contact(search_val):
     config = load_config()
     try:
